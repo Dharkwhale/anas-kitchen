@@ -380,3 +380,34 @@ h3 {
 @media (min-width: 768px) {
   .menu__panel.active { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── About ─────────────────────────────────────────────────── */
+.about {
+  background: var(--color-primary);
+  padding: var(--section-pad);
+}
+.about__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  max-width: var(--max-width);
+  margin-inline: auto;
+}
+.about .section-label { color: var(--color-gold); }
+.about h2  { color: #fff; margin-bottom: 16px; }
+.about p   { color: var(--color-text-light); line-height: 1.8; font-size: 1.05rem; margin-bottom: 28px; }
+.about__img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  box-shadow: 0 8px 40px rgba(0,0,0,.3);
+}
+
+@media (min-width: 768px) {
+  .about__inner {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .about__text { order: -1; }
+}

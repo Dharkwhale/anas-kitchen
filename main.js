@@ -93,6 +93,27 @@ function renderMenu() {
 </section>`;
 }
 
+/* ── About ───────────────────────────────────────────── */
+function renderAbout() {
+  const orderLink = waLink("Hi Ana's Kitchen, I'd like to come and taste your food");
+  return `
+<section class="about" id="about">
+  <div class="about__inner">
+    <div class="about__text reveal">
+      <span class="section-label">Our Story</span>
+      <h2>${CFG.about.headline}</h2>
+      <p>${CFG.about.story}</p>
+      <a class="btn btn-gold" href="${orderLink}" target="_blank" rel="noopener">
+        Come taste for yourself &rarr;
+      </a>
+    </div>
+    <div class="reveal">
+      <img class="about__img" src="${CFG.about.image}" alt="Ana's Kitchen food" />
+    </div>
+  </div>
+</section>`;
+}
+
 /* ── Nav ─────────────────────────────────────────────── */
 function renderNav() {
   const orderLink = waLink("Hi Ana's Kitchen, I'd like to place an order");
@@ -179,7 +200,7 @@ function initTabs() {
 /* ── Render all + init ───────────────────────────────── */
 function render() {
   document.getElementById('app').innerHTML =
-    renderNav() + renderHero() + renderSpotlight() + renderMenu();
+    renderNav() + renderHero() + renderSpotlight() + renderMenu() + renderAbout();
   initNav();
   initTabs();
 }
