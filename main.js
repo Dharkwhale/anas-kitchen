@@ -154,6 +154,15 @@ function renderFooter() {
         <a class="footer__social-btn" href="${waHref}" target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
     </div>
+    <div class="footer__right">
+      <div class="footer__logo" style="font-size:1rem;margin-bottom:16px;">Quick Order</div>
+      <div class="footer__info">
+        <p><a href="#menu" style="color:#6B8F7A;">🫘 Ewa Agoyin</a></p>
+        <p><a href="#menu" style="color:#6B8F7A;">🍲 Soups</a></p>
+        <p><a href="#menu" style="color:#6B8F7A;">🍚 Rice Dishes</a></p>
+        <p><a href="#menu" style="color:#6B8F7A;">🍝 Spaghetti</a></p>
+      </div>
+    </div>
     <div class="footer__copy">&copy; 2026 ${name}. All rights reserved.</div>
   </div>
 </footer>`;
