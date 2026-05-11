@@ -11,6 +11,27 @@ function stars(n) {
   return '★'.repeat(n) + '☆'.repeat(5 - n);
 }
 
+/* ── Hero ────────────────────────────────────────────── */
+function renderHero() {
+  const orderLink = waLink("Hi Ana's Kitchen, I'd like to place an order");
+  return `
+<section class="hero" id="hero">
+  <div class="hero__inner">
+    <div class="hero__content reveal">
+      <span class="hero__badge">🌶 ${CFG.hero.badge}</span>
+      <h1>${CFG.hero.headline}</h1>
+      <p class="hero__sub">${CFG.hero.subheadline}</p>
+      <a class="btn btn-gold" href="${orderLink}" target="_blank" rel="noopener">
+        📲 Order on WhatsApp
+      </a>
+    </div>
+    <div class="hero__media reveal">
+      <img class="hero__img" src="${CFG.hero.image}" alt="Ana's Kitchen Ewa Agoyin" />
+    </div>
+  </div>
+</section>`;
+}
+
 /* ── Nav ─────────────────────────────────────────────── */
 function renderNav() {
   const orderLink = waLink("Hi Ana's Kitchen, I'd like to place an order");
@@ -79,7 +100,7 @@ function initNav() {
 
 /* ── Render all + init ───────────────────────────────── */
 function render() {
-  document.getElementById('app').innerHTML = renderNav();
+  document.getElementById('app').innerHTML = renderNav() + renderHero();
   initNav();
 }
 
