@@ -114,6 +114,25 @@ function renderAbout() {
 </section>`;
 }
 
+/* ── Reviews ─────────────────────────────────────────── */
+function renderReviews() {
+  const cards = CFG.testimonials.map(t => `
+    <div class="review-card reveal">
+      <div class="review-card__stars">${stars(t.rating)}</div>
+      <p class="review-card__quote">&ldquo;${t.quote}&rdquo;</p>
+      <div class="review-card__name">&mdash; ${t.name}</div>
+    </div>`).join('');
+
+  return `
+<section class="reviews" id="reviews">
+  <div class="reviews__header reveal">
+    <span class="section-label">What People Are Saying</span>
+    <h2>Real Reviews, Real Nigerians</h2>
+  </div>
+  <div class="reviews__grid">${cards}</div>
+</section>`;
+}
+
 /* ── Nav ─────────────────────────────────────────────── */
 function renderNav() {
   const orderLink = waLink("Hi Ana's Kitchen, I'd like to place an order");
@@ -200,7 +219,7 @@ function initTabs() {
 /* ── Render all + init ───────────────────────────────── */
 function render() {
   document.getElementById('app').innerHTML =
-    renderNav() + renderHero() + renderSpotlight() + renderMenu() + renderAbout();
+    renderNav() + renderHero() + renderSpotlight() + renderMenu() + renderAbout() + renderReviews();
   initNav();
   initTabs();
 }
