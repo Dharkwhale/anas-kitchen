@@ -133,6 +133,41 @@ function renderReviews() {
 </section>`;
 }
 
+/* ── Footer ──────────────────────────────────────────── */
+function renderFooter() {
+  const { name, tagline, location, hours, whatsapp, instagram } = CFG.business;
+  const waHref = waLink("Hi Ana's Kitchen, I'd like to place an order");
+  const waDisplay = '+' + whatsapp.replace(/(\d{3})(\d{3})(\d{3})(\d{4})/, '$1 $2 $3 $4');
+  return `
+<footer class="footer">
+  <div class="footer__inner">
+    <div>
+      <div class="footer__logo">${name}</div>
+      <div class="footer__tagline">${tagline}</div>
+      <div class="footer__info">
+        <p>📍 ${location}</p>
+        <p>🕐 ${hours}</p>
+        <p>📱 ${waDisplay}</p>
+      </div>
+      <div class="footer__socials">
+        <a class="footer__social-btn" href="${instagram}" target="_blank" rel="noopener">📸 Instagram</a>
+        <a class="footer__social-btn" href="${waHref}" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer__copy">&copy; 2026 ${name}. All rights reserved.</div>
+  </div>
+</footer>`;
+}
+
+/* ── Floating WA ─────────────────────────────────────── */
+function renderFloatingWA() {
+  const href = waLink("Hi Ana's Kitchen, I'd like to place an order");
+  return `
+<a class="wa-float" href="${href}" target="_blank" rel="noopener" aria-label="Order on WhatsApp">
+  💬 Order Now
+</a>`;
+}
+
 /* ── Nav ─────────────────────────────────────────────── */
 function renderNav() {
   const orderLink = waLink("Hi Ana's Kitchen, I'd like to place an order");
@@ -219,7 +254,14 @@ function initTabs() {
 /* ── Render all + init ───────────────────────────────── */
 function render() {
   document.getElementById('app').innerHTML =
-    renderNav() + renderHero() + renderSpotlight() + renderMenu() + renderAbout() + renderReviews();
+    renderNav() +
+    renderHero() +
+    renderSpotlight() +
+    renderMenu() +
+    renderAbout() +
+    renderReviews() +
+    renderFooter() +
+    renderFloatingWA();
   initNav();
   initTabs();
 }

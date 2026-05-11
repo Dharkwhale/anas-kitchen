@@ -444,3 +444,78 @@ h3 {
 
 @media (min-width: 768px) { .reviews__grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px){ .reviews__grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ── Footer ────────────────────────────────────────────────── */
+.footer {
+  background: var(--color-primary-dark);
+  padding: clamp(40px, 6vw, 64px) clamp(16px, 5vw, 48px);
+}
+.footer__inner {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+.footer__logo {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  margin-bottom: 8px;
+}
+.footer__tagline { font-size: 0.85rem; color: var(--color-text-light); margin-bottom: 16px; }
+.footer__info p  { font-size: 0.85rem; color: #6B8F7A; line-height: 2; }
+.footer__socials { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+.footer__social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-primary);
+  color: var(--color-gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  transition: opacity .2s;
+}
+.footer__social-btn:hover { opacity: .8; }
+.footer__copy {
+  font-size: 0.75rem;
+  color: #4A6741;
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid #1B4332;
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+  .footer__inner { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+/* ── Floating WA ───────────────────────────────────────────── */
+.wa-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-wa-green);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 20px rgba(37,211,102,.4);
+  animation: wa-pulse 2.5s ease-in-out infinite;
+  cursor: pointer;
+}
+.wa-float:hover { animation-play-state: paused; opacity: .92; }
+
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,.4); }
+  50%       { box-shadow: 0 4px 32px rgba(37,211,102,.7); }
+}
