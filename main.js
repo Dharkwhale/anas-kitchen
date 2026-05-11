@@ -39,7 +39,7 @@ function renderSpotlight() {
 <section class="spotlight">
   <div class="spotlight__inner">
     <div class="reveal">
-      <img class="spotlight__img" src="${CFG.spotlight.image}" alt="Ewa Agoyin and Agege Bread" />
+      <img class="spotlight__img" src="${CFG.spotlight.image}" alt="Ewa Agoyin and Agege Bread" loading="lazy" />
     </div>
     <div class="spotlight__text reveal">
       <span class="section-label">⭐ Signature Dish</span>
@@ -60,7 +60,7 @@ function renderMenuCard(item) {
   return `
 <div class="menu-card reveal">
   ${badge}
-  <img class="menu-card__img" src="${item.image}" alt="${item.name}" />
+  <img class="menu-card__img" src="${item.image}" alt="${item.name}" loading="lazy" />
   <div>
     <div class="menu-card__name">${item.name}</div>
     <div class="menu-card__desc">${item.description}</div>
@@ -75,10 +75,15 @@ function renderMenuCard(item) {
 function renderMenu() {
   const tabs = CFG.menuCategories.map((cat, i) => `
     <button class="menu__tab${i === 0 ? ' active' : ''}"
+            id="tab-${cat.id}"
+            role="tab"
+            aria-selected="${i === 0 ? 'true' : 'false'}"
+            aria-controls="panel-${cat.id}"
             data-tab="${cat.id}">${cat.label}</button>`).join('');
 
   const panels = CFG.menuCategories.map((cat, i) => `
-    <div class="menu__panel${i === 0 ? ' active' : ''}" id="panel-${cat.id}">
+    <div class="menu__panel${i === 0 ? ' active' : ''}" id="panel-${cat.id}"
+         role="tabpanel" aria-labelledby="tab-${cat.id}">
       ${cat.items.map(renderMenuCard).join('')}
     </div>`).join('');
 
@@ -87,7 +92,7 @@ function renderMenu() {
   <div class="menu__header reveal">
     <span class="section-label">Our Menu</span>
     <h2>What Are You Craving?</h2>
-    <div class="menu__tabs" id="menu-tabs">${tabs}</div>
+    <div class="menu__tabs" id="menu-tabs" role="tablist">${tabs}</div>
   </div>
   <div class="menu__panels">${panels}</div>
 </section>`;
@@ -108,7 +113,7 @@ function renderAbout() {
       </a>
     </div>
     <div class="reveal">
-      <img class="about__img" src="${CFG.about.image}" alt="Ana's Kitchen food" />
+      <img class="about__img" src="${CFG.about.image}" alt="Ana's Kitchen food" loading="lazy" />
     </div>
   </div>
 </section>`;
@@ -183,7 +188,7 @@ function renderNav() {
 <nav class="nav" id="nav">
   <div class="nav__inner">
     <a class="nav__logo" href="#">
-      <img src="assets/images/logo.png" alt="Ana's Kitchen logo" />
+      <img src="assets/images/logo.png" alt="Ana's Kitchen logo" width="36" height="36" />
       ${CFG.business.name}
     </a>
     <ul class="nav__links">
@@ -249,8 +254,12 @@ function initTabs() {
       const target = btn.dataset.tab;
 
       // Update tabs
-      tabBtns.forEach(b => b.classList.remove('active'));
+      tabBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
 
       // Update panels
       document.querySelectorAll('.menu__panel').forEach(p => p.classList.remove('active'));

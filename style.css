@@ -185,12 +185,12 @@ h3 {
   padding: 16px clamp(16px, 5vw, 48px) 24px;
 }
 .nav-open .nav__drawer { display: flex; }
-.nav__drawer a {
+.nav__drawer a:not(.btn) {
   padding: 14px 0;
   font-size: 1rem;
   font-weight: 600;
   color: var(--color-text-light);
-  border-bottom: 1px solid #1B4332;
+  border-bottom: 1px solid var(--color-primary);
   transition: color .2s;
 }
 .nav__drawer a:hover { color: var(--color-gold); }
@@ -518,4 +518,12 @@ h3 {
 @keyframes wa-pulse {
   0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,.4); }
   50%       { box-shadow: 0 4px 32px rgba(37,211,102,.7); }
+}
+
+/* ── Accessibility ─────────────────────────────────────────── */
+:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { transition: none; opacity: 1; transform: none; }
+  .wa-float { animation: none; }
 }
