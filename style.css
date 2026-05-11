@@ -107,3 +107,97 @@ h3 {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ── Nav ───────────────────────────────────────────────────── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-primary);
+  transition: box-shadow .3s;
+}
+.nav.scrolled { box-shadow: var(--shadow-nav); }
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px clamp(16px, 5vw, 48px);
+  max-width: var(--max-width);
+  margin-inline: auto;
+}
+
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-gold);
+}
+.nav__logo img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+
+.nav__links {
+  display: none;
+  align-items: center;
+  gap: 32px;
+}
+.nav__links a {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+  transition: color .2s;
+}
+.nav__links a:hover { color: var(--color-gold); }
+
+.nav__cta { margin-left: 24px; }
+
+.nav__hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.nav__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-gold);
+  border-radius: 2px;
+  transition: transform .3s, opacity .3s;
+}
+
+/* Hamburger open state */
+.nav-open .nav__hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-open .nav__hamburger span:nth-child(2) { opacity: 0; }
+.nav-open .nav__hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile drawer */
+.nav__drawer {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  background: var(--color-primary-dark);
+  padding: 16px clamp(16px, 5vw, 48px) 24px;
+}
+.nav-open .nav__drawer { display: flex; }
+.nav__drawer a {
+  padding: 14px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+  border-bottom: 1px solid #1B4332;
+  transition: color .2s;
+}
+.nav__drawer a:hover { color: var(--color-gold); }
+.nav__drawer .btn { margin-top: 16px; width: 100%; justify-content: center; }
+
+@media (min-width: 768px) {
+  .nav__links   { display: flex; }
+  .nav__hamburger { display: none; }
+  .nav__drawer  { display: none !important; }
+}
