@@ -32,6 +32,27 @@ function renderHero() {
 </section>`;
 }
 
+/* ── Spotlight ───────────────────────────────────────── */
+function renderSpotlight() {
+  const orderLink = waLink("Hi, I'd like to order Ewa Agoyin please");
+  return `
+<section class="spotlight">
+  <div class="spotlight__inner">
+    <div class="reveal">
+      <img class="spotlight__img" src="${CFG.spotlight.image}" alt="Ewa Agoyin and Agege Bread" />
+    </div>
+    <div class="spotlight__text reveal">
+      <span class="section-label">⭐ Signature Dish</span>
+      <h2>${CFG.spotlight.headline}</h2>
+      <p>${CFG.spotlight.description}</p>
+      <a class="btn btn-green" href="${orderLink}" target="_blank" rel="noopener">
+        Order Ewa Agoyin &rarr;
+      </a>
+    </div>
+  </div>
+</section>`;
+}
+
 /* ── Nav ─────────────────────────────────────────────── */
 function renderNav() {
   const orderLink = waLink("Hi Ana's Kitchen, I'd like to place an order");
@@ -100,7 +121,8 @@ function initNav() {
 
 /* ── Render all + init ───────────────────────────────── */
 function render() {
-  document.getElementById('app').innerHTML = renderNav() + renderHero();
+  document.getElementById('app').innerHTML =
+    renderNav() + renderHero() + renderSpotlight();
   initNav();
 }
 
