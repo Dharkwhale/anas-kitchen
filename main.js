@@ -34,7 +34,7 @@ function renderHero() {
 
 /* ── Spotlight ───────────────────────────────────────── */
 function renderSpotlight() {
-  const orderLink = waLink("Hi, I'd like to order Ewa Agoyin please");
+  const orderLink = waLink("Hi Ana's Kitchen, I'd like to order Ewa Agoyin please");
   return `
 <section class="spotlight">
   <div class="spotlight__inner">
@@ -157,10 +157,9 @@ function renderFooter() {
     <div class="footer__right">
       <div class="footer__logo" style="font-size:1rem;margin-bottom:16px;">Quick Order</div>
       <div class="footer__info">
-        <p><a href="#menu" style="color:#6B8F7A;">🫘 Ewa Agoyin</a></p>
-        <p><a href="#menu" style="color:#6B8F7A;">🍲 Soups</a></p>
-        <p><a href="#menu" style="color:#6B8F7A;">🍚 Rice Dishes</a></p>
-        <p><a href="#menu" style="color:#6B8F7A;">🍝 Spaghetti</a></p>
+        ${CFG.menuCategories.map(cat =>
+          `<p><a href="#menu" data-tab="${cat.id}" class="footer__quick-link" style="color:#6B8F7A;">${cat.label}</a></p>`
+        ).join('')}
       </div>
     </div>
     <div class="footer__copy">&copy; 2026 ${name}. All rights reserved.</div>
