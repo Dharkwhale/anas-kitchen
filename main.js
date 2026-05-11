@@ -159,11 +159,29 @@ function initNav() {
   }, { passive: true });
 }
 
+function initTabs() {
+  const tabBtns = document.querySelectorAll('.menu__tab');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+
+      // Update tabs
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Update panels
+      document.querySelectorAll('.menu__panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('panel-' + target).classList.add('active');
+    });
+  });
+}
+
 /* ── Render all + init ───────────────────────────────── */
 function render() {
   document.getElementById('app').innerHTML =
     renderNav() + renderHero() + renderSpotlight() + renderMenu();
   initNav();
+  initTabs();
 }
 
 document.addEventListener('DOMContentLoaded', render);
