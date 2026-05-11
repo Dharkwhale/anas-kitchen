@@ -53,6 +53,46 @@ function renderSpotlight() {
 </section>`;
 }
 
+/* ── Menu ────────────────────────────────────────────── */
+function renderMenuCard(item) {
+  const msg   = `Hi Ana's Kitchen, I'd like to order ${item.name} (${item.price})`;
+  const badge = item.badge ? `<span class="menu-card__badge">${item.badge}</span>` : '';
+  return `
+<div class="menu-card reveal">
+  ${badge}
+  <img class="menu-card__img" src="${item.image}" alt="${item.name}" />
+  <div>
+    <div class="menu-card__name">${item.name}</div>
+    <div class="menu-card__desc">${item.description}</div>
+  </div>
+  <div class="menu-card__right">
+    <span class="menu-card__price">${item.price}</span>
+    <a class="menu-card__order" href="${waLink(msg)}" target="_blank" rel="noopener">Order</a>
+  </div>
+</div>`;
+}
+
+function renderMenu() {
+  const tabs = CFG.menuCategories.map((cat, i) => `
+    <button class="menu__tab${i === 0 ? ' active' : ''}"
+            data-tab="${cat.id}">${cat.label}</button>`).join('');
+
+  const panels = CFG.menuCategories.map((cat, i) => `
+    <div class="menu__panel${i === 0 ? ' active' : ''}" id="panel-${cat.id}">
+      ${cat.items.map(renderMenuCard).join('')}
+    </div>`).join('');
+
+  return `
+<section class="menu" id="menu">
+  <div class="menu__header reveal">
+    <span class="section-label">Our Menu</span>
+    <h2>What Are You Craving?</h2>
+    <div class="menu__tabs" id="menu-tabs">${tabs}</div>
+  </div>
+  <div class="menu__panels">${panels}</div>
+</section>`;
+}
+
 /* ── Nav ─────────────────────────────────────────────── */
 function renderNav() {
   const orderLink = waLink("Hi Ana's Kitchen, I'd like to place an order");
@@ -122,7 +162,7 @@ function initNav() {
 /* ── Render all + init ───────────────────────────────── */
 function render() {
   document.getElementById('app').innerHTML =
-    renderNav() + renderHero() + renderSpotlight();
+    renderNav() + renderHero() + renderSpotlight() + renderMenu();
   initNav();
 }
 
