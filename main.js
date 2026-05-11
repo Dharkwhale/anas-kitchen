@@ -40,9 +40,47 @@ function renderNav() {
 </nav>`;
 }
 
+/* ── Nav interactivity ──────────────────────────────── */
+function initNav() {
+  const hamburger = document.getElementById('hamburger');
+  const drawer    = document.getElementById('nav-drawer');
+  const nav       = document.getElementById('nav');
+
+  hamburger.addEventListener('click', () => {
+    const open = document.body.classList.toggle('nav-open');
+    hamburger.setAttribute('aria-expanded', String(open));
+    drawer.setAttribute('aria-hidden', String(!open));
+  });
+
+  // Close drawer on link click
+  document.querySelectorAll('.drawer-link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.body.classList.remove('nav-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', e => {
+    if (document.body.classList.contains('nav-open') &&
+        !nav.contains(e.target)) {
+      document.body.classList.remove('nav-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // Scroll shadow
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  }, { passive: true });
+}
+
 /* ── Render all + init ───────────────────────────────── */
 function render() {
   document.getElementById('app').innerHTML = renderNav();
+  initNav();
 }
 
 document.addEventListener('DOMContentLoaded', render);
