@@ -90,6 +90,8 @@ h3 {
   font-weight: 700;
   cursor: pointer;
   border: none;
+  position: relative;
+  overflow: hidden;
   transition: opacity .2s, transform .15s;
 }
 .btn:hover { opacity: .88; transform: translateY(-1px); }
@@ -523,7 +525,153 @@ h3 {
 /* ── Accessibility ─────────────────────────────────────────── */
 :focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; }
 
+/* ════════════════════════════════════════════════════════
+   ANIMATION LAYER
+   ════════════════════════════════════════════════════════ */
+
+/* ── Keyframes ──────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes heroBreath {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.025); }
+}
+@keyframes panelFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes ringPulse {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50%       { opacity: 0.65; transform: scale(1.03); }
+}
+
+/* ── Hero staggered entrance ────────────────────────── */
+.hero-animate > .hero__badge { animation: fadeUp .5s  .05s cubic-bezier(.22,1,.36,1) both; }
+.hero-animate > h1            { animation: fadeUp .65s .2s  cubic-bezier(.22,1,.36,1) both; }
+.hero-animate > .hero__sub    { animation: fadeUp .65s .35s cubic-bezier(.22,1,.36,1) both; }
+.hero-animate > .btn          { animation: fadeUp .55s .5s  cubic-bezier(.22,1,.36,1) both; }
+.hero-media-animate           { animation: fadeIn .9s  .25s ease both; }
+
+/* Hero image subtle breathing */
+.hero-media-animate .hero__img { animation: heroBreath 6s 1.2s ease-in-out infinite; }
+
+/* Hero media ring decoration */
+.hero__media {
+  position: relative;
+}
+.hero__media::before {
+  content: '';
+  position: absolute;
+  inset: -14px;
+  border: 2px dashed rgba(255,209,102,.28);
+  border-radius: calc(var(--radius-md) + 14px);
+  animation: ringPulse 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Nav link underline sweep ───────────────────────── */
+.nav__links a { position: relative; }
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--color-gold);
+  transition: width .25s ease;
+}
+.nav__links a:not(.btn):hover::after { width: 100%; }
+
+/* ── Button shimmer ─────────────────────────────────── */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+  transform: skewX(-20deg);
+  transition: left .55s ease;
+}
+.btn:hover::after { left: 150%; }
+
+/* ── Section label dash ─────────────────────────────── */
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 18px; height: 2px;
+  background: currentColor;
+  vertical-align: middle;
+  margin-right: 8px;
+  border-radius: 2px;
+}
+
+/* ── Scroll-reveal stagger ──────────────────────────── */
+.spotlight__inner .reveal:nth-child(2)  { transition-delay: .15s; }
+.about__inner     .reveal:nth-child(2)  { transition-delay: .15s; }
+.reviews__grid .review-card:nth-child(2){ transition-delay: .12s; }
+.reviews__grid .review-card:nth-child(3){ transition-delay: .24s; }
+.menu__panel .menu-card:nth-child(2)    { transition-delay: .07s; }
+.menu__panel .menu-card:nth-child(3)    { transition-delay: .14s; }
+.menu__panel .menu-card:nth-child(4)    { transition-delay: .21s; }
+
+/* ── Menu panel fade on tab switch ─────────────────── */
+.menu__panel.active { animation: panelFade .35s cubic-bezier(.22,1,.36,1); }
+
+/* ── Menu card hover ────────────────────────────────── */
+.menu-card {
+  transition: opacity .5s ease, transform .25s ease, box-shadow .25s ease;
+}
+.menu-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0,0,0,.11);
+}
+
+/* ── Menu tab hover ─────────────────────────────────── */
+.menu__tab:not(.active):hover { transform: translateY(-1px); }
+
+/* ── Review card hover ──────────────────────────────── */
+.review-card {
+  transition: opacity .5s ease, transform .25s ease, box-shadow .25s ease;
+}
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 36px rgba(27,67,50,.1);
+}
+
+/* ── Spotlight image hover ──────────────────────────── */
+.spotlight__img { transition: transform .5s ease; }
+.spotlight__inner:hover .spotlight__img { transform: scale(1.02); }
+
+/* ── Footer quick link underline ────────────────────── */
+.footer__quick-link {
+  position: relative;
+  display: inline-block;
+}
+.footer__quick-link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width .2s ease;
+}
+.footer__quick-link:hover::after { width: 100%; }
+
+/* ── Reduced motion ─────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .reveal { transition: none; opacity: 1; transform: none; }
   .wa-float { animation: none; }
+  .hero-animate > * { animation: none; opacity: 1; transform: none; }
+  .hero-media-animate { animation: none; opacity: 1; }
+  .hero-media-animate .hero__img { animation: none; }
+  .hero__media::before { animation: none; }
+  .menu-card, .review-card { transition: none; }
+  .btn::after { display: none; }
+  .spotlight__img { transition: none; }
 }

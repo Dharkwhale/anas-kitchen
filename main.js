@@ -17,7 +17,7 @@ function renderHero() {
   return `
 <section class="hero" id="hero">
   <div class="hero__inner">
-    <div class="hero__content reveal">
+    <div class="hero__content hero-animate">
       <span class="hero__badge">🌶 ${CFG.hero.badge}</span>
       <h1>${CFG.hero.headline}</h1>
       <p class="hero__sub">${CFG.hero.subheadline}</p>
@@ -25,7 +25,7 @@ function renderHero() {
         📲 Order on WhatsApp
       </a>
     </div>
-    <div class="hero__media reveal">
+    <div class="hero__media hero-media-animate">
       <img class="hero__img" src="${CFG.hero.image}" alt="Ana's Kitchen Ewa Agoyin" />
     </div>
   </div>
