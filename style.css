@@ -4,7 +4,7 @@
   --color-primary-dark:#0D2B1E;
   --color-mid-green:   #2D6A4F;
   --color-accent-bg:   #FFFBF0;
-  --color-gold:        #FFD166;
+  --color-gold:        #E84D0A;
   --color-orange:      #F97316;
   --color-wa-green:    #25D366;
   --color-text:        #1A1A1A;
@@ -220,7 +220,7 @@ h3 {
 }
 .hero__badge {
   display: inline-block;
-  background: rgba(255,209,102,.15);
+  background: rgba(232,77,10,.15);
   color: var(--color-gold);
   font-size: 0.7rem;
   font-weight: 700;
@@ -569,7 +569,7 @@ h3 {
   content: '';
   position: absolute;
   inset: -14px;
-  border: 2px dashed rgba(255,209,102,.28);
+  border: 2px dashed rgba(232,77,10,.28);
   border-radius: calc(var(--radius-md) + 14px);
   animation: ringPulse 3.5s ease-in-out infinite;
   pointer-events: none;
