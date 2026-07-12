@@ -1,7 +1,8 @@
 'use strict';
 
-const CFG = window.siteConfig;
-const WA  = CFG.business.whatsapp;
+const CFG  = window.siteConfig;
+const WA   = CFG.business.whatsapp;
+const NAME = CFG.business.name;
 
 function waLink(msg) {
   return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
@@ -13,7 +14,7 @@ function stars(n) {
 
 /* ── Hero ────────────────────────────────────────────── */
 function renderHero() {
-  const orderLink = waLink("Hi Ana's Kitchen, I'd like to place an order");
+  const orderLink = waLink(`Hi ${NAME}, I'd like to place an order`);
   return `
 <section class="hero" id="hero">
   <div class="hero__inner">
@@ -26,7 +27,7 @@ function renderHero() {
       </a>
     </div>
     <div class="hero__media hero-media-animate">
-      <img class="hero__img" src="${CFG.hero.image}" alt="Ana's Kitchen Ewa Agoyin" />
+      <img class="hero__img" src="${CFG.hero.image}" alt="${NAME} signature dish" />
     </div>
   </div>
 </section>`;
@@ -34,7 +35,7 @@ function renderHero() {
 
 /* ── Spotlight ───────────────────────────────────────── */
 function renderSpotlight() {
-  const orderLink = waLink("Hi Ana's Kitchen, I'd like to order Ewa Agoyin please");
+  const orderLink = waLink(`Hi ${NAME}, I'd like to order Ewa Agoyin please`);
   return `
 <section class="spotlight">
   <div class="spotlight__inner">
@@ -55,7 +56,7 @@ function renderSpotlight() {
 
 /* ── Menu ────────────────────────────────────────────── */
 function renderMenuCard(item) {
-  const msg   = `Hi Ana's Kitchen, I'd like to order ${item.name} (${item.price})`;
+  const msg   = `Hi ${NAME}, I'd like to order ${item.name} (${item.price})`;
   const badge = item.badge ? `<span class="menu-card__badge">${item.badge}</span>` : '';
   return `
 <div class="menu-card reveal">
@@ -100,7 +101,7 @@ function renderMenu() {
 
 /* ── About ───────────────────────────────────────────── */
 function renderAbout() {
-  const orderLink = waLink("Hi Ana's Kitchen, I'd like to come and taste your food");
+  const orderLink = waLink(`Hi ${NAME}, I'd like to come and taste your food`);
   return `
 <section class="about" id="about">
   <div class="about__inner">
@@ -113,7 +114,7 @@ function renderAbout() {
       </a>
     </div>
     <div class="reveal">
-      <img class="about__img" src="${CFG.about.image}" alt="Ana's Kitchen food" loading="lazy" />
+      <img class="about__img" src="${CFG.about.image}" alt="${NAME} food" loading="lazy" />
     </div>
   </div>
 </section>`;
@@ -141,7 +142,7 @@ function renderReviews() {
 /* ── Footer ──────────────────────────────────────────── */
 function renderFooter() {
   const { name, tagline, location, hours, whatsapp, instagram } = CFG.business;
-  const waHref = waLink("Hi Ana's Kitchen, I'd like to place an order");
+  const waHref = waLink(`Hi ${NAME}, I'd like to place an order`);
   const waDisplay = '+' + whatsapp.replace(/(\d{3})(\d{3})(\d{3})(\d{4})/, '$1 $2 $3 $4');
   return `
 <footer class="footer">
@@ -174,7 +175,7 @@ function renderFooter() {
 
 /* ── Floating WA ─────────────────────────────────────── */
 function renderFloatingWA() {
-  const href = waLink("Hi Ana's Kitchen, I'd like to place an order");
+  const href = waLink(`Hi ${NAME}, I'd like to place an order`);
   return `
 <a class="wa-float" href="${href}" target="_blank" rel="noopener" aria-label="Order on WhatsApp">
   💬 Order Now
@@ -183,12 +184,12 @@ function renderFloatingWA() {
 
 /* ── Nav ─────────────────────────────────────────────── */
 function renderNav() {
-  const orderLink = waLink("Hi Ana's Kitchen, I'd like to place an order");
+  const orderLink = waLink(`Hi ${NAME}, I'd like to place an order`);
   return `
 <nav class="nav" id="nav">
   <div class="nav__inner">
     <a class="nav__logo" href="#">
-      <img src="assets/images/logo.png" alt="Ana's Kitchen logo" width="36" height="36" />
+      <img src="assets/images/logo.png" alt="${NAME} logo" width="36" height="36" />
       ${CFG.business.name}
     </a>
     <ul class="nav__links">

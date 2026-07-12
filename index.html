@@ -13,77 +13,7 @@
 <body>
   <div id="app"></div>
 
-  <script>
-  window.siteConfig = {
-    business: {
-      name:      "Ana's Kitchen",
-      tagline:   "Lagos' Favourite Ewa Agoyin, Delivered Fresh",
-      location:  "Lagos, Nigeria",
-      whatsapp:  "2348098053646",
-      hours:     "Monday – Saturday, 7am – 8pm",
-      instagram: "https://www.instagram.com/ana_kitchen56/"
-    },
-    hero: {
-      badge:       "Lagos Street Food",
-      headline:    "Lagos' Favourite <em>Ewa Agoyin,</em> Delivered Fresh",
-      subheadline: "Authentic Nigerian street food made with love. Order now and taste the difference.",
-      image:       "https://images.pexels.com/photos/19870147/pexels-photo-19870147.jpeg?auto=compress&cs=tinysrgb&w=1200"
-    },
-    spotlight: {
-      image:       "https://images.pexels.com/photos/19870148/pexels-photo-19870148.jpeg?auto=compress&cs=tinysrgb&w=900",
-      headline:    "The Ewa Agoyin That Started It All",
-      description: "Slow-cooked honey beans mashed to creamy perfection, drenched in Ana's secret blend of pepper sauce and palm oil. Served with fresh agege bread — Lagos' greatest breakfast, now delivered to your door."
-    },
-    menuCategories: [
-      {
-        id: "ewa", label: "🫘 Ewa Agoyin",
-        items: [
-          { name: "Ewa Agoyin + Agege Bread",  description: "Classic combo with Ana's pepper sauce",     price: "₦600",   image: "https://images.pexels.com/photos/19870147/pexels-photo-19870147.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Best Seller" },
-          { name: "Ewa Agoyin + Fried Fish",   description: "Extra sauce, crispy fish on the side",      price: "₦1,000", image: "https://images.pexels.com/photos/19870149/pexels-photo-19870149.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "" },
-          { name: "Ewa Agoyin Large Portion",  description: "For when one plate is never enough",        price: "₦900",   image: "https://images.pexels.com/photos/19870150/pexels-photo-19870150.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "" },
-          { name: "Ewa Agoyin + Plantain",     description: "Sweet ripe plantain meets spicy sauce",     price: "₦850",   image: "https://images.pexels.com/photos/17952748/pexels-photo-17952748.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "" }
-        ]
-      },
-      {
-        id: "soups", label: "🍲 Soups",
-        items: [
-          { name: "Egusi Soup",      description: "Rich, hearty, cooked from scratch",          price: "₦1,500", image: "https://images.pexels.com/photos/35490114/pexels-photo-35490114.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Fan Favourite" },
-          { name: "Pepper Soup",     description: "Hot, spicy, soul-warming Lagos style",        price: "₦1,800", image: "https://images.pexels.com/photos/4871233/pexels-photo-4871233.jpeg?auto=compress&cs=tinysrgb&w=400",  badge: "" },
-          { name: "Bitterleaf Soup", description: "Traditional recipe, slow-cooked with assorted meat", price: "₦1,400", image: "https://images.pexels.com/photos/35096093/pexels-photo-35096093.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "" },
-          { name: "Ogbono Soup",     description: "Thick draw soup with stockfish and shaki",   price: "₦1,500", image: "https://images.pexels.com/photos/34636461/pexels-photo-34636461.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "" }
-        ]
-      },
-      {
-        id: "rice", label: "🍚 Rice",
-        items: [
-          { name: "Jollof Rice + Chicken",  description: "Party-style jollof, smoky and rich",         price: "₦1,500", image: "https://images.pexels.com/photos/13915043/pexels-photo-13915043.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Best Seller" },
-          { name: "Fried Rice + Turkey",    description: "Colourful fried rice with juicy turkey",      price: "₦1,800", image: "https://images.pexels.com/photos/17952746/pexels-photo-17952746.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "" },
-          { name: "White Rice + Stew",      description: "Our signature tomato stew with assorted meat",price: "₦1,200", image: "https://images.pexels.com/photos/5333327/pexels-photo-5333327.jpeg?auto=compress&cs=tinysrgb&w=400",  badge: "Daily Special" },
-          { name: "Ofada Rice + Sauce",     description: "Local ofada with spicy ayamase sauce",        price: "₦1,600", image: "https://images.pexels.com/photos/36707700/pexels-photo-36707700.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "" }
-        ]
-      },
-      {
-        id: "spaghetti", label: "🍝 Spaghetti",
-        items: [
-          { name: "Spaghetti + Chicken",   description: "Nigerian-style spag with peppery chicken", price: "₦1,400", image: "https://images.pexels.com/photos/9760214/pexels-photo-9760214.jpeg?auto=compress&cs=tinysrgb&w=400",  badge: "Best Seller" },
-          { name: "Jollof Spaghetti",      description: "Cooked in tomato base, Lagos street style", price: "₦1,200", image: "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=400",  badge: "" },
-          { name: "Spaghetti + Fried Fish",description: "Crispy fish on a bed of seasoned spag",    price: "₦1,300", image: "https://images.pexels.com/photos/9760214/pexels-photo-9760214.jpeg?auto=compress&cs=tinysrgb&w=400",  badge: "" },
-          { name: "Spaghetti Stir Fry",    description: "Tossed with peppers, onions and beef",     price: "₦1,500", image: "https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg?auto=compress&cs=tinysrgb&w=400",  badge: "" }
-        ]
-      }
-    ],
-    about: {
-      headline: "Cooked the Lagos Way, Every Single Day",
-      story:    "Ana's Kitchen was born from a single pot of Ewa Agoyin that a neighbourhood couldn't stop coming back for. Today we cook every meal fresh to order — the same way we would cook for family. No shortcuts, no reheating, just real Nigerian food made with care.",
-      image:    "https://images.pexels.com/photos/13994299/pexels-photo-13994299.jpeg?auto=compress&cs=tinysrgb&w=900"
-    },
-    testimonials: [
-      { name: "Tolu A., Surulere",    quote: "This Ewa Agoyin ehn… I had to call my mum to apologise for not visiting in months.", rating: 5 },
-      { name: "Chidi O., Yaba",       quote: "Fast delivery and the stew was still hot. Ana's is my default now, abeg.",             rating: 5 },
-      { name: "Funmi B., Lagos Island", quote: "The spaghetti and chicken? God abeg. My whole office is now placing group orders.",       rating: 5 }
-    ]
-  };
-  </script>
+  <script src="config.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
